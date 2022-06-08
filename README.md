@@ -118,6 +118,17 @@ port        ENV.fetch("PORT") { 3001 }
 `rails db:migrate`
 * How to run the test suite
 `rspec` remember to change .rspec file and add --format documentation to get clear tests
+Tips on tests to write:
+ - validations of username (including presence and uniqueness, and length)
+ - validations of password (including presence and length of)
+ - registration and authentication test with username or password is incorrect start with describe 'POST /register' do and use have_http_status(:created) and have_http_status(:unauthorized)
+* Architecture (tips on how to create)
+  - validate models after tests
+  - form proper routes for test
+  - create proper errors and errors raised for authentication controller
+  - create representers folder and services folder for the user controller and check both ruby files for how to create them.
+  - the representer is how the json will be outputted onto the screen. 
+  - the services is how the JWT is going to be generated.
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
