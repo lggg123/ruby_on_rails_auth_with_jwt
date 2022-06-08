@@ -8,8 +8,7 @@ class Api::V1::UsersController < ApplicationController
             # check representers/user_respresenter.rb for more architecture details
             render json: UserRepresenter.new(user).as_json, status: :created
         else
-            @user.save
-            render json: { error: @user.errors.full_messsages }, status: :unproccessable_entity
+            render json: { status: 500, errors: user.errors.full_messages }
         end
     end
 
